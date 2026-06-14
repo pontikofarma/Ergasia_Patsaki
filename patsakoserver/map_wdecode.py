@@ -16,8 +16,8 @@ arg4 = sys.argv[4]
 arg5 = sys.argv[5]
 arg6 = sys.argv[6]
 
-
-file_to_send=open("arithmos_bit",'rb')
+#arithmos
+file_to_send=open(arg2,'rb')
 arithmos_bit=pickle.load(file_to_send)
 file_to_send.close()
 mp.dps=2*arithmos_bit
@@ -26,16 +26,23 @@ file_to_send=open(arg1,'rb')
 #tag_ls=pickle.load(file_to_send)
 #file_to_send.close()
 
-file_to_send=open("ls_pososta_ls",'rb')
+#pososta
+file_to_send=open(arg5,'rb')
 ls_pososta_ls=pickle.load(file_to_send)
 file_to_send.close()
-file_to_send=open("ls_xarakthres_ls",'rb')
+
+#xarakthres
+file_to_send=open(arg6,'rb')
 ls_xarakthres_ls=pickle.load(file_to_send)
 file_to_send.close()
-file_to_send=open("noumero",'rb')
+
+#noumero
+file_to_send=open(arg3,'rb')
 noumero=pickle.load(file_to_send)
 file_to_send.close()
-file_to_send=open("diafora",'rb')
+
+#diafora
+file_to_send=open(arg4,'rb')
 diafora=pickle.load(file_to_send)
 file_to_send.close()
 #breakpoint()
