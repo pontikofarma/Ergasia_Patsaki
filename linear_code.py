@@ -86,10 +86,14 @@ def add_errors(codeword, error_percent):
 for i, chunk in enumerate(chunks):
     bits = [tuple(b) for b in chunk]
     codeword = encode(bits)
+    codeword = add_errors(codeword, error_percent=0.10)
     #base64
-    codeword2 = ''.join(str(byte) for byte in codeword)
-    codeword2 = bytes(int(codeword2[i:i+8], 2) for i in range(0, len(codeword2), 8))
-    codeword64 = base64.b64encode(codeword2).decode("utf-8")
-          
-    received = add_errors(codeword, error_percent=0.10)
-    decode(received)
+    codeword = ''.join(str(byte) for byte in codeword)
+    codeword = bytes(int(codeword[i:i+8], 2) for i in range(0, len(codeword), 8))
+    codeword = base64.b64encode(codeword).decode("utf-8")
+
+          #Server side
+    decoded = base64.b64decode(codeword)  
+    decoded = ''.join(f'{byte:08b}' for byte in decoded)
+    result = decode(received)
+    h2 = hashlib.sha256(decoded.encode("utf-8").hexdigest())
