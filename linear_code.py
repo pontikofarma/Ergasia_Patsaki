@@ -97,3 +97,4 @@ for i, chunk in enumerate(chunks):
     decoded = ''.join(f'{byte:08b}' for byte in decoded)
     result = decode(received)
     h2 = hashlib.sha256(decoded.encode("utf-8").hexdigest())
+          # αν h2 = h σημαινει πως διορθωθηκαν τα λαθη και ηρθε το μηνυμα.
