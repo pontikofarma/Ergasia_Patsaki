@@ -8,7 +8,6 @@ import subprocess
 import sumpiesh
 
 
-
 headers = {'Content-type': 'application/json'}
 
 param_list=[]
@@ -83,6 +82,7 @@ print(f"Compression Algorithm:{info['compression_algorithm']}")
 print(f"Encoding:{info['encoding']}")
 
 #---Λίστα παραμέτρων---
+'''
 print("Enter the parameters")
 text=input()
 while (text!="end"):
@@ -90,10 +90,33 @@ while (text!="end"):
     if(text!="end"):
         param_list.append(text)
     text=input()
+'''
 
-print(f"Parameter List:{param_list}")
+#param_list.append()
+
+def arxeia(file):
+    f = open(file,'rb')
+    bin = f.read()
+    f.close()
+    hex_bin=bin.hex()
+    param_list.append(hex_bin)
+
+arxeia("sumpiesh\\arithmos_bit2")
+arxeia("sumpiesh\\noumero2")
+arxeia("sumpiesh\\diafora2")
+arxeia("sumpiesh\\ls_pososta_ls2")
+arxeia("sumpiesh\\ls_xarakthres_ls2")
+arxeia("sumpiesh\\arithmos_bit2")
+        
+#print(f"Parameter List:{param_list}")
+print("parameters imported")
+
 
 #---Errors---
+print("Errors (0-100):")
+info["errors"]=input()
+print(info["errors"])
+
 
 #---SHA256---
 hash_object = hashlib.sha256(hex_bin.encode())
@@ -123,5 +146,3 @@ response = requests.post(url="http://192.168.2.8:5000/", json=info , headers=hea
 
 print(response.text)
 
-#http://192.168.2.11:5000/
-#"http://0.0.0.0:5000/"
