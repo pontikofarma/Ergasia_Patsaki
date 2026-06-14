@@ -106,7 +106,7 @@ arxeia("sumpiesh\\noumero2")
 arxeia("sumpiesh\\diafora2")
 arxeia("sumpiesh\\ls_pososta_ls2")
 arxeia("sumpiesh\\ls_xarakthres_ls2")
-arxeia("sumpiesh\\arithmos_bit2")
+#arxeia("sumpiesh\\arithmos_bit2")
         
 #print(f"Parameter List:{param_list}")
 print("parameters imported")
