@@ -82,11 +82,6 @@ def add_errors(codeword, error_percent):
          codeword[pos] = int(codeword[pos]) ^ 1   # στις θέσεις που υπολόγισε αλλάζει τα bits
          return codeword
 
-def do_SHA256(codeword):
-          b = ''.join(str(i) for i in codeword)
-          b2 = b.encode("utf-8")
-          return hashlib.sha256(b2).hexdigest()
-
 
 for i, chunk in enumerate(chunks):
     bits = [tuple(b) for b in chunk]
@@ -95,8 +90,6 @@ for i, chunk in enumerate(chunks):
     codeword2 = ''.join(str(byte) for byte in codeword)
     codeword2 = bytes(int(codeword2[i:i+8], 2) for i in range(0, len(codeword2), 8))
     codeword64 = base64.b64encode(codeword2).decode("utf-8")
-    #SHA256
-    h = do_SHA256(codeword)
           
     received = add_errors(codeword, error_percent=0.10)
     decode(received)
