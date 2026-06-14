@@ -83,10 +83,17 @@ def add_errors(codeword, error_percent):
          return codeword
 
 
+def do_SHA256(codeword):
+    b = ''.join(str(i) for i in codeword) 
+    b2 = b.encode("utf-8")       
+    return hashlib.sha256(b2).hexdigest()
+
 for i, chunk in enumerate(chunks):
     bits = [tuple(b) for b in chunk]
     codeword = encode(bits)
     codeword = add_errors(codeword, error_percent=0.10)
+
+    h = do_SHA256(codeword)
     #base64
     codeword = ''.join(str(byte) for byte in codeword)
     codeword = bytes(int(codeword[i:i+8], 2) for i in range(0, len(codeword), 8))
